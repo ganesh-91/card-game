@@ -12,26 +12,43 @@
 // font-family: 'Ma Shan Zheng', cursive;
 
 .App-header {
-  min-height: 56px;
+  min-height: 66px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   // text-transform: capitalize;
   background-color: #282c34;
-  align-items: center;
+  // align-items: center;
   color: white;
 
   .score-val {
     font-size: 22px;
     margin-left: 10px;
-    font-family: 'Sigmar One', cursive;
+    font-family: 'SigmarOne', sans-serif;
   }
 
   .ply-name {
     font-size: 16px;
     margin-left: 10px;
-    font-family: 'Sigmar One', cursive;
+    font-family: 'SigmarOne', sans-serif;
     text-transform: lowercase;
+  }
+
+  .header-main-div {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .header-counter-div {
+    display: flex;
+    flex: 1;
+    font-family: 'SigmarOne', sans-serif;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 
 }

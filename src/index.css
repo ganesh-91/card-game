@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Sigmar+One&display=swap');
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,4 +10,14 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+	font-family: 'SigmarOne';
+	src: url('fonts/SigmarOne-Regular.ttf'); 
+	src: 
+		local('Sigmar One'),
+		local('Sigmar-One'),
+		url('fonts/SigmarOne-Regular.ttf') 
+		format('opentype');
 }
