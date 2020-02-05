@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+}
+
+// font-family: 'Zhi Mang Xing', cursive;
+// font-family: 'Sigmar One', cursive;
+// font-family: 'Lobster', cursive;
+// font-family: 'Ma Shan Zheng', cursive;
+
+.App-header {
+  min-height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  // text-transform: capitalize;
+  background-color: #282c34;
+  align-items: center;
+  color: white;
+
+  .score-val {
+    font-size: 22px;
+    margin-left: 10px;
+    font-family: 'Sigmar One', cursive;
+  }
+
+  .ply-name {
+    font-size: 16px;
+    margin-left: 10px;
+    font-family: 'Sigmar One', cursive;
+    text-transform: lowercase;
+  }
+
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.App-header {}

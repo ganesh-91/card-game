@@ -1,0 +1,115 @@
+.arena-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  padding: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  // .single-card {
+  //   border-radius: 10px;
+  //   height: 300px;
+  //   width: 200px;
+  //   margin: 4px;
+  //   // display: flex;
+  //   // flex-direction: column;
+
+  //   background-color: transparent;
+  //   perspective: 1000px;
+
+  //   .single-card-front {
+  //     // display: flex;
+  //     // flex: 1;
+  //     // flex-direction: column;
+  //     border-radius: 10px;
+  //     background: red;
+
+  //     position: relative;
+  //     width: 100%;
+  //     height: 100%;
+  //     text-align: center;
+  //     transition: transform 0.8s;
+  //     transform-style: preserve-3d;
+  //   }
+
+  //   .single-card-back {
+  //     // display: flex;
+  //     // flex: 1;
+  //     // flex-direction: column;
+  //     // background: yellow;
+  //   }
+
+  //   &:hover .single-card-front {
+  //     transform: rotateY(180deg);
+  //   }
+
+  //   .single-card-front,
+  //   .single-card-back {
+  //     position: absolute;
+  //     width: 100%;
+  //     height: 100%;
+  //     -webkit-backface-visibility: hidden;
+  //     /* Safari */
+  //     backface-visibility: hidden;
+  //   }
+
+  //   .single-card-back {
+  //     background-color: dodgerblue;
+  //     color: white;
+  //     transform: rotateY(180deg);
+  //   }
+  // }
+
+
+  .flip-card {
+    border-radius: 10px;
+    background-color: transparent;
+    height: 300px;
+    width: 200px;
+    perspective: 1000px;
+    margin: 4px;
+
+    .flip-card-inner {
+      border-radius: 10px;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .card-flip.flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      border-radius: 10px;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      /* Safari */
+      backface-visibility: hidden;
+    }
+
+    .flip-card-front {
+      background-color: red;
+    }
+
+    .flip-card-back {
+      background-color: yellow;
+      transform: rotateY(180deg);
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      font-size: 36px;
+      font-family: 'Sigmar One', cursive;
+    }
+  }
+
+
+
+}
