@@ -13,12 +13,13 @@ const Arena = () => {
     const colorSet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
     let colorArr = colorSet.slice(0, range);
 
-    useEffect(() => {
+    const render = () => {
         colorArr = colorSet.slice(0, range);
         let len = colorArr.length;
 
         setSlots([{
             id: 0,
+            genZero: true,
             cl: colorArr[(Math.floor(Math.random() * (len)) + 1) - 1],
             x: 0, y: 0, infected: true
         }])
@@ -34,23 +35,24 @@ const Arena = () => {
                 infected: inx === 0 ? true : false
             }])
         }
+    }
+
+    const resetGame = () => {
+        setSlots([]);
+        setMoves(0);
+    }
+
+    useEffect(() => {
+        render();
     }, ([range]));
 
     useEffect(() => {
         if (targetColor !== '') {
             // let newSlots = slots.slice();
-            if (moves <= totalMoves) {
+            if (moves < totalMoves) {
                 let newSlots = JSON.parse(JSON.stringify(slots));
-                console.log('newSlots', newSlots)
                 newSlots.forEach((el) => {
                     if (el.infected) {
-                        // console.log(el)
-
-                        // console.log(slots[((el.x + 1) * 10) + el.y]);
-                        // console.log(slots[((el.x) * 10) + (el.y + 1)]);
-                        // console.log(slots[((el.x - 1) * 10) + el.y]);
-                        // console.log(slots[((el.x) * 10) + (el.y - 1)]);
-
                         newSlots[el.id].cl = targetColor;
                         if (el.x < 9) {
                             if (newSlots[((el.x + 1) * 10) + el.y].cl === targetColor) {
@@ -79,12 +81,6 @@ const Arena = () => {
                                 newSlots[((el.x) * 10) + (el.y - 1)].cl = targetColor;
                             }
                         }
-
-
-                        // newSlots[((el.x + 1) * 10) + el.y].infected = true
-                        // newSlots[((el.x) * 10) + (el.y + 1)].infected = true
-                        // newSlots[((el.x - 1) * 10) + el.y].infected = true
-                        // newSlots[((el.x) * 10) + (el.y - 1)].infected = true
                     }
                 });
                 setSlots(newSlots);
@@ -93,40 +89,39 @@ const Arena = () => {
         }
     }, ([targetColor]));
 
-    console.log('object', slots)
+    const newGame = () => {
+        resetGame();
+        render();
+    }
 
-    const targetChanged = () => {
-
+    const targetChanged = (el) => {
+        if (moves < totalMoves) {
+            setMoves(moves + 1);
+            setTargetColor(el);
+        }
     }
 
     return (
         <>
-            {/* <Header
-                wins={wins}
-                player={start && player}
-                turns={turns}
-                attempts={attempts}
-            /> */}
             <main>
                 <div className="controls">
-                    <div className="new-game">New Game</div>
+                    <div onClick={newGame} className="new-game">New Game</div>
                     <div>Moves <span className="moves">{moves}</span> / <span className="max-moves">30</span></div>
                 </div>
                 <div className="board">
-                    {(moves <= totalMoves) ? slots.map((el) => {
-                        return (<div className={"tile " + el.cl + " " + el.id} >{el.infected.toString()}</div>)
-                    }) : 'Game over'}
+                    {(moves < totalMoves) ? slots.map((el) => {
+                        return (<div className={"tile " + el.cl + " " + (el.genZero ? "gen-zero" : "")} />)
+                    }) : <div className="game-over">Game over</div>}
                 </div>
                 <div className="colors">
                     {colorArr.map((el) => {
                         return (<div onClick={() => {
-                            setMoves(moves + 1);
-                            setTargetColor(el);
-                        }} className={"color " + el} >{el}</div>)
+                            targetChanged(el)
+                        }} className={"color " + el} />)
                     })}
                 </div>
                 <div className="controls">
-                    <div>Skill <span className="skill">0</span></div>
+                    <div>Level <span className="skill">{range - 2}</span></div>
                     <div><input type="range" className="level" onChange={(e) => {
                         setRange(e.target.value)
                     }} value={range} min="3" max="10" /></div>

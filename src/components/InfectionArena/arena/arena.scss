@@ -86,7 +86,7 @@
   border: 1ch solid;
 }
 
-.board:not(.started) tile:first-of-type::after {
+.board:not(.started) .tile:first-of-type::after {
   content: '\f005';
   font-size: 1.1em;
 }
@@ -140,10 +140,10 @@ body {
 
 .game-over {
   pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
   font-size: 5em;
 }
 

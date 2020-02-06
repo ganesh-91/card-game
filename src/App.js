@@ -1,13 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
-import Arena from './components/arena/arena';
-import Header from './components/header'
+import CardsArena from './components/CardsArena/arena/arena';
+import InfectionArena from './components/InfectionArena/arena/arena';
+// import Header from './components/header'
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <Arena />
+      <InfectionArena />
+      {/* <CardsArena /> */}
     </div>
   );
 }
