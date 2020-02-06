@@ -13,11 +13,23 @@ code {
 }
 
 @font-face {
-	font-family: 'SigmarOne';
-	src: url('fonts/SigmarOne-Regular.ttf'); 
-	src: 
-		local('Sigmar One'),
-		local('Sigmar-One'),
-		url('fonts/SigmarOne-Regular.ttf') 
-		format('opentype');
+  font-family: 'SigmarOne';
+  src: url('fonts/SigmarOne-Regular.ttf');
+  src:
+    local('Sigmar One'),
+    local('Sigmar-One'),
+    url('fonts/SigmarOne-Regular.ttf') format('opentype');
+}
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
 }
