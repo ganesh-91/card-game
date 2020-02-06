@@ -3,7 +3,7 @@ import { uniqueIdGenerator } from "../utils/uiGenerator";
 
 const CountdownTimer = () => {
     const calculateTimeLeft = () => {
-        const difference = +new Date("2020-02-15 20:00") - +new Date();
+        const difference = +new Date("2020-02-14 00:00") - +new Date();
         let timeLeft = {};
 
         if (difference > 0) {

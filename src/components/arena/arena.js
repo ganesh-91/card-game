@@ -5,9 +5,14 @@ import Header from '../header'
 import './arena.scss';
 
 const Arena = () => {
+    const [attempts, setAttempts] = useState(0);
+    const [start, setStart] = useState(false);
+    const [player, setPlayer] = useState('');
+    // const [players, setPlayers] = useState([{ name: 'player1', label: '', no: 0 }, { name: 'player2', label: '', no: 0 }]);
+    const [showPopup, setShowPopup] = useState(true);
     const [className, setClassName] = useState([]);
     const [timer, setTimer] = useState(10 + ":" + 1);
-    const [cardNumb, setCardNumb] = useState(0);
+    const [wins, setWins] = useState(0);
     const [selectedCards, setSelectedCards] = useState([]);
     const [arr, setArr] = useState([]);
     const [turns, setTurns] = useState(0);
@@ -38,8 +43,6 @@ const Arena = () => {
     }, ([]));
 
     const cardClick = (el) => {
-        // console.log('el.cardUniqueId', el.cardUniqueId, selectedCards);
-
         if (turns >= 2) {
             setTurns(1);
             setClassName([el.id]);
@@ -50,40 +53,28 @@ const Arena = () => {
             setSelectedCards(oldSelectedCards => [...oldSelectedCards, el.cardUniqueId]);
             if (selectedCards[0] === el.cardUniqueId) {
                 // console.log('win');
+                setWins(wins + 1)
                 setTurnedCards(oldTurnedCards => [...oldTurnedCards, el.cardUniqueId])
             }
         }
+        setAttempts(attempts + 1);
     }
-
-    // const countDown = () => {
-    //     let time = 10 + ":" + 1;
-    //     startTimer();
-
-    //     function startTimer() {
-    //         let presentTime = time;
-    //         let timeArray = presentTime.split(/[:]+/);
-    //         let m = timeArray[0];
-    //         let s = checkSecond((timeArray[1] - 1));
-    //         if (s == 59) { m = m - 1 }
-    //         //if(m<0){alert('timer completed')}
-    //         time = m + ":" + s;
-    //         console.log(m + ":" + s)
-    //         setTimeout(startTimer, 1000);
-    //     }
-
-    //     function checkSecond(sec) {
-    //         if (sec < 10 && sec >= 0) { sec = "0" + sec }; // add zero in front of numbers < 10
-    //         if (sec < 0) { sec = "59" };
-    //         return sec;
-    //     }
-    // }
-
-    // countDown();
 
     return (
         <>
-            <Header />
-            
+            <Header
+                wins={wins}
+                player={start && player}
+                turns={turns}
+                attempts={attempts}
+            />
+            {showPopup && <div id="myModal" className="modal">
+                <div className="modal-content">
+                    {/* <span onClick={() => { setShowPopup(false); }} className="close">&times;</span> */}
+                    <input className="input" value={player} onChange={(e) => { setPlayer(e.target.value) }} />
+                    <button className="btn" onClick={() => { setStart(true); setShowPopup(false) }}>Start</button>
+                </div>
+            </div>}
             <div className="arena-wrapper">
                 {arr.map((el) => {
                     return (
