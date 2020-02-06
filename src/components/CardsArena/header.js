@@ -1,5 +1,5 @@
 import React from 'react';
-import CountdownTimer from '../components/CountdownTimer';
+import CountdownTimer from './CountdownTimer';
 
 const Header = (props) => {
 

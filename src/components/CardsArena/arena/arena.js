@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { uniqueIdGenerator } from '../../utils/uiGenerator'
+import { uniqueIdGenerator } from '../../../utils/uiGenerator'
 import Header from '../header'
 
 import './arena.scss';

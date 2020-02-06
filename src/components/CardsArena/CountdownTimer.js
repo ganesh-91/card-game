@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { uniqueIdGenerator } from "../utils/uiGenerator";
+import { uniqueIdGenerator } from "../../utils/uiGenerator";
 
 const CountdownTimer = () => {
     const calculateTimeLeft = () => {
