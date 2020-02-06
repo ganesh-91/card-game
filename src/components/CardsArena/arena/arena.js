@@ -18,7 +18,7 @@ const Arena = () => {
     const [turns, setTurns] = useState(0);
     const [turnedCards, setTurnedCards] = useState([]);
     useEffect(() => {
-        const vr = 12;
+        const vr = 8;
         let uniqueIdArr = [''];
         let uniqueIdArrLog = [''];
         for (let ind = 1; ind < ((vr * 2) + 1); ind++) {

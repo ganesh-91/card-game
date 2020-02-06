@@ -8,8 +8,8 @@ import './App.scss';
 function App() {
   return (
     <div className="App">
-      {/* <InfectionArena /> */}
-      <CardsArena />
+      <InfectionArena />
+      {/* <CardsArena /> */}
     </div>
   );
 }
