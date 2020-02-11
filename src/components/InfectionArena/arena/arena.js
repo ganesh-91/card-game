@@ -4,7 +4,7 @@ import Header from '../header'
 
 import './arena.scss';
 
-const Arena = () => {
+const Arena = (props) => {
     const [winEvn, setWinEvn] = useState(false);
     const [slots, setSlots] = useState([]);
     const [targetColor, setTargetColor] = useState('');
@@ -117,8 +117,9 @@ const Arena = () => {
 
     return (
         <>
-            <main>
+            <main className="infection-game">
                 <div className="controls">
+                    <div onClick={() => { props.changeGame('') }} className="new-game">Go Back</div>
                     <div onClick={newGame} className="new-game">New Game</div>
                     <div>Moves <span className="moves">{moves}</span> / <span className="max-moves">{totalMoves}</span></div>
                 </div>

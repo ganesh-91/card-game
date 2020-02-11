@@ -4,7 +4,7 @@ import Header from '../header'
 
 import './arena.scss';
 
-const Arena = () => {
+const Arena = (props) => {
     const [attempts, setAttempts] = useState(0);
     const [start, setStart] = useState(false);
     const [player, setPlayer] = useState('');
@@ -61,12 +61,13 @@ const Arena = () => {
     }
 
     return (
-        <>
+        <main className="cards-games">
             <Header
                 wins={wins}
                 player={start && player}
                 turns={turns}
                 attempts={attempts}
+                changeGame={props.changeGame}
             />
             {showPopup && <div id="myModal" className="modal">
                 <div className="modal-content">
@@ -90,7 +91,7 @@ const Arena = () => {
                     )
                 })}
             </div >
-        </>
+        </main>
     );
 }
 
