@@ -172,6 +172,7 @@ body {
 }
 
 .infected-text {
+  width: fit-content;
   transform: translate(-120%, 100%);
   height: 100%;
   font-size: 2em;
