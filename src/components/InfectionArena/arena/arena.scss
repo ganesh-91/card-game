@@ -84,6 +84,7 @@
   height: 65vmin;
   width: 65vmin;
   border: 1ch solid;
+  position: relative;
 }
 
 .board:not(.started) .tile:first-of-type::after {
@@ -139,12 +140,16 @@ body {
 }
 
 .game-over {
+  height: 100%;
+  width: 100%;
+  position: absolute;
   pointer-events: none;
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
   font-size: 5em;
+  background: #000000bd;
 }
 
 .fa {

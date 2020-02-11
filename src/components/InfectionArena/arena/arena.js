@@ -5,11 +5,12 @@ import Header from '../header'
 import './arena.scss';
 
 const Arena = () => {
-    const totalMoves = 10;
+    const [winEvn, setWinEvn] = useState(false);
     const [slots, setSlots] = useState([]);
     const [targetColor, setTargetColor] = useState('');
     const [moves, setMoves] = useState(0);
     const [range, setRange] = useState(3)
+    const [totalMoves, setTotalMoves] = useState(30);
     const colorSet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
     let colorArr = colorSet.slice(0, range);
 
@@ -84,6 +85,12 @@ const Arena = () => {
                     }
                 });
                 setSlots(newSlots);
+                let len = newSlots.filter((el) => {
+                    return !el.infected;
+                }).length
+                if (len <= 0) {
+                    setWinEvn(true)
+                }
             }
 
         }
@@ -94,11 +101,19 @@ const Arena = () => {
         render();
     }
 
+    const checkWin = (el) => {
+        // console.log('slots', slots.filter((el) => {
+        //     return !el.infected;
+        // }))
+
+    }
+
     const targetChanged = (el) => {
         if (moves < totalMoves) {
             setMoves(moves + 1);
             setTargetColor(el);
         }
+        checkWin();
     }
 
     return (
@@ -106,27 +121,32 @@ const Arena = () => {
             <main>
                 <div className="controls">
                     <div onClick={newGame} className="new-game">New Game</div>
-                    <div>Moves <span className="moves">{moves}</span> / <span className="max-moves">30</span></div>
+                    <div>Moves <span className="moves">{moves}</span> / <span className="max-moves">{totalMoves}</span></div>
                 </div>
                 <div className="board">
-                    {(moves < totalMoves) ? slots.map((el) => {
-                        return (<div className={"tile " + el.cl + " " + (el.genZero ? "gen-zero" : "")} />)
-                    }) : <div className="game-over">Game over</div>}
+                    {((moves >= totalMoves) && !winEvn) && <div className="game-over">Game over</div>}
+                    {winEvn && <div className="game-over">WIN</div>}
+                    {slots.map((el, i) => {
+                        return (<div className={"tile " + el.cl + " " + i + " " + (el.genZero ? "gen-zero" : "")} />)
+                    })}
+
                 </div>
                 <div className="colors">
                     {colorArr.map((el) => {
                         return (<div onClick={() => {
-                            targetChanged(el)
+                            ((moves < totalMoves) && !winEvn) && targetChanged(el)
                         }} className={"color " + el} />)
                     })}
                 </div>
                 <div className="controls">
                     <div>Level <span className="skill">{range - 2}</span></div>
-                    <div><input type="range" className="level" onChange={(e) => {
-                        setRange(e.target.value)
-                    }} value={range} min="3" max="10" /></div>
+                    <div>
+                        <input type="range" className="level" onChange={(e) => {
+                            setRange(e.target.value)
+                            setTotalMoves(e.target.value * 2)
+                        }} value={range} min="3" max="10" />
+                    </div>
                 </div>
-                <div className='game-over'></div>
             </main>
 
         </>
