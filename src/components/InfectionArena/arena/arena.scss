@@ -1,14 +1,3 @@
-.arena-wrapper {
-  // display: flex;
-  flex: 1;
-  // flex-direction: row;
-  padding: 16px;
-  // flex-wrap: wrap;
-  justify-content: center;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(auto, 1.2fr);
-}
 
 .tile {
   flex: 0 1 6.5vmin;

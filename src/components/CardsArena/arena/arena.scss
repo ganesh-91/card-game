@@ -144,22 +144,10 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 767px) and (orientation: portrait) {
-  html {
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    width: 100vh;
-    height: 100vw;
-    overflow-x: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
-  }
-}
-
 .cards-games {
-  width: 100vw;
-  height: 100vh;
+  width: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  margin: auto;
 }
