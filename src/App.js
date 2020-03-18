@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import CardsArena from './components/CardsArena/arena/arena';
 import InfectionArena from './components/InfectionArena/arena/arena';
+import GuideTheBallGame from './components/GuideTheBallGame/GuideTheBallGame'
 // import Header from './components/header'
 import './App.scss';
 
@@ -12,7 +13,7 @@ function App() {
   }
   return (
     <div className="App">
-      {game === '' && <div className="landing-screen">
+      {/* {game === '' && <div className="landing-screen">
         <div>
           Choose the Game
       </div>
@@ -22,7 +23,8 @@ function App() {
         </ul>
       </div>}
       {game === 'ZOMBIE' && <InfectionArena changeGame={setGame} />}
-      {game === 'CARDS' && <CardsArena changeGame={setGame}/>}
+      {game === 'CARDS' && <CardsArena changeGame={setGame}/>} */}
+      <GuideTheBallGame />
     </div>
   );
 }
