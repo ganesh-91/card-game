@@ -38,3 +38,10 @@
     height: 25vw;
     // background: antiquewhite;
 }
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+    .game-arena {
+        width: 80vw;
+        height: 80vw;
+    }
+  }
