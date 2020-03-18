@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './GuideTheBallGame.scss';
 
-const GuideTheBallGame = () => {
+const GuideTheBallGame = (props) => {
     let [blocks, setBlocks] = useState([]);
     let memo = [];
 
@@ -78,6 +78,11 @@ const GuideTheBallGame = () => {
 
     return (
         <main className="game-wrapper">
+            <div className="controls">
+                <div onClick={() => { props.changeGame('') }} className="new-game">Go Back</div>
+                {/* <div onClick={newGame} className="new-game">New Game</div> */}
+                {/* <div>Moves <span className="moves">{moves}</span> / <span className="max-moves">{totalMoves}</span></div> */}
+            </div>
             <div className="game-arena">
                 {blocks.map((el) => {
                     return (<div key={Math.random().toString()}

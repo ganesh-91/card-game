@@ -13,18 +13,19 @@ function App() {
   }
   return (
     <div className="App">
-      {/* {game === '' && <div className="landing-screen">
+      {game === '' && <div className="landing-screen">
         <div>
           Choose the Game
       </div>
         <ul>
           <li className="game-options" onClick={() => { selectGame('ZOMBIE') }}>Zombie Infection</li>
           <li className="game-options" onClick={() => { selectGame('CARDS') }}>Flip the Cards</li>
+          <li className="game-options" onClick={() => { selectGame('Guide_The_Ball') }}>Guide The Ball</li>
         </ul>
       </div>}
       {game === 'ZOMBIE' && <InfectionArena changeGame={setGame} />}
-      {game === 'CARDS' && <CardsArena changeGame={setGame}/>} */}
-      <GuideTheBallGame />
+      {game === 'CARDS' && <CardsArena changeGame={setGame} />}
+      {game === 'Guide_The_Ball' && <GuideTheBallGame changeGame={setGame} />}
     </div>
   );
 }
